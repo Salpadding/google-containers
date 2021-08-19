@@ -14,8 +14,8 @@ then
   cat $file | while read line
   do
     dst=$(echo $line | sed 's/k8s.gcr.io/salpadding/')
-    docker pull $file
-    docker tag $file $dst
+    docker pull $line
+    docker tag $line $dst
     docker push $dst
   done
 
