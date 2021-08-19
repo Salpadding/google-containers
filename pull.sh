@@ -15,7 +15,7 @@ then
   do
     src=$(echo $line | sed 's/k8s.gcr.io/salpadding/')
     docker pull $src
-    docker tag $src $file
+    docker tag $src $line
   done
 
 else
