@@ -16,8 +16,8 @@ then
     src=$(echo $line | sed 's/k8s.gcr.io/salpadding/')
     if [[ $line == *=* ]]
     then
-        src="${line#=*}"
-        dst="${line#*=}" 
+        src="${line%%=*}"
+        dst="${line#*=}"
     fi
     docker pull $dst
     docker tag $dst $src
