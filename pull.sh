@@ -13,6 +13,10 @@ then
 
   cat $file | while read line
   do
+    if [[ -z $line ]];
+    then
+      continue
+    fi  
     src=$line
     dst=$(echo $line | sed 's/k8s.gcr.io/salpadding/')
     if [[ $line == *=* ]]
@@ -21,8 +25,8 @@ then
         dst="${line#*=}"
     fi
     echo "src=$src dst=$dst"
-    docker pull $dst
-    docker tag $dst $src
+    # docker pull $dst
+    # docker tag $dst $src
   done
 
 else
