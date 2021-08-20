@@ -13,10 +13,15 @@ then
 
   cat $file | while read line
   do
-    dst=$(echo $line | sed 's/k8s.gcr.io/salpadding/')
-    docker pull $line
-    docker tag $line $dst
-    docker push $dst
+    src=$(echo $line | sed 's/k8s.gcr.io/salpadding/')
+    if [[ $line == *=* ]]
+    then
+        val="${line#*=}"
+        src=$val  
+    fi
+    echo $src
+    docker pull $src
+    docker tag $src $line
   done
 
 else
