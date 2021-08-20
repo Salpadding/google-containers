@@ -25,8 +25,8 @@ then
         dst="${line#*=}"
     fi
     echo "src=$src dst=$dst"
-    # docker pull $dst
-    # docker tag $dst $src
+    docker pull $dst
+    docker tag $dst $src
   done
 
 else
