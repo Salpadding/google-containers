@@ -13,7 +13,7 @@ then
 
   cat $file | while read line
   do
-    src=$(echo $line | sed 's/k8s.gcr.io/salpadding/')
+    dst=$(echo $line | sed 's/k8s.gcr.io/salpadding/')
     if [[ $line == *=* ]]
     then
         src="${line%%=*}"
